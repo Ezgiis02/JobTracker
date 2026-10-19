@@ -31,4 +31,7 @@ public class CompanyService {
         }
         return result.get();
     }
+    public Company createCompany(Company company){
+        return companyRepository.save(company);
+    }
 }

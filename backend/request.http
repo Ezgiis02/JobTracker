@@ -1,0 +1,12 @@
+###
+GET http://localhost:8080/api/companies
+
+###
+POST http://localhost:8080/api/companies
+Content-Type: application/json
+
+{
+  "name": "TUSAŞ",
+  "city": "Ankara",
+  "website": "tusas.com"
+}
