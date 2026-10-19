@@ -34,4 +34,23 @@ public class CompanyService {
     public Company createCompany(Company company){
         return companyRepository.save(company);
     }
+    public void  deleteCompany(Long id){
+
+
+        if(!companyRepository.existsById(id)){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Şirket bulunamadı "+id);
+        }
+
+        companyRepository.deleteById(id);
+    }
+    public Company updateCompany(Long id, Company updated){
+        Company existing= getCompanyById(id);
+
+        existing.setName(updated.getName());
+        existing.setCity(updated.getCity());
+        existing.setWebsite(updated.getWebsite());
+
+        return companyRepository.save(existing);
+    }
+
 }

@@ -32,4 +32,15 @@ public class CompanyController {
     public Company createCompany(@RequestBody Company company){
         return companyService.createCompany(company);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCompany(@PathVariable Long id){
+         companyService.deleteCompany(id);
+    }
+
+    @PutMapping("/{id}")
+    public Company updateCompany(@PathVariable Long id,@RequestBody Company updated){
+        return companyService.updateCompany(id,updated);
+    }
 }
