@@ -1,0 +1,8 @@
+package com.ezgi.jobtracker.repository;
+
+import com.ezgi.jobtracker.entity.JobApplication;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JobApplicationRepository extends JpaRepository<JobApplication,Long> {
+
+}
