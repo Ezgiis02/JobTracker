@@ -30,7 +30,7 @@ public class DataSeeder implements CommandLineRunner {
         Company havelsan =companyRepository.save(new Company("HAVELSAN", "Ankara", "havelsan.com.tr"));
         Company roketsan=companyRepository.save(new Company("ROKETSAN", "Ankara", "roketsan.com.tr"));
 
-        jobApplicationRepository.save(new JobApplication(aselsan,"AI Engeer", LocalDate.of(2026,10,1), ApplicationStatus.INTERVIEW,"Teknik mülakat 25 Ekim"));
+        jobApplicationRepository.save(new JobApplication(aselsan,"AI Engineer", LocalDate.of(2026,10,1), ApplicationStatus.INTERVIEW,"Teknik mülakat 25 Ekim"));
         jobApplicationRepository.save(new JobApplication(aselsan,"Yazılım Mühendisi", LocalDate.of(2026,10,5), ApplicationStatus.APPLIED,null));
         jobApplicationRepository.save(new JobApplication(havelsan, "Backend Developer",LocalDate.of(2026, 9, 20), ApplicationStatus.OFFER, "Teklif değerlendiriliyor"));
 
