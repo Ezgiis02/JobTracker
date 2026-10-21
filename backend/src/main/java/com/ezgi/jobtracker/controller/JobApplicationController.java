@@ -1,11 +1,10 @@
 package com.ezgi.jobtracker.controller;
 
+import com.ezgi.jobtracker.dto.JobApplicationRequest;
 import com.ezgi.jobtracker.entity.JobApplication;
 import com.ezgi.jobtracker.service.JobApplicationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +28,11 @@ public class JobApplicationController {
         return jobApplicationService.getApplicationById(id);
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public JobApplication createApplication(@RequestBody JobApplicationRequest request){
+        return jobApplicationService.createJobApplication(request);
+    }
 
 
 }

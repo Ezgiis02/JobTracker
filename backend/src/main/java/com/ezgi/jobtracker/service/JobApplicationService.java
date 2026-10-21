@@ -1,5 +1,7 @@
 package com.ezgi.jobtracker.service;
 
+import com.ezgi.jobtracker.dto.JobApplicationRequest;
+import com.ezgi.jobtracker.entity.Company;
 import com.ezgi.jobtracker.entity.JobApplication;
 import com.ezgi.jobtracker.repository.JobApplicationRepository;
 import org.springframework.http.HttpStatus;
@@ -12,9 +14,11 @@ import java.util.Optional;
 @Service
 public class JobApplicationService {
     private final JobApplicationRepository jobApplicationRepository;
+    private final CompanyService companyService;
 
-    public JobApplicationService(JobApplicationRepository jobApplicationRepository){
+    public JobApplicationService(JobApplicationRepository jobApplicationRepository,CompanyService companyService){
         this.jobApplicationRepository=jobApplicationRepository;
+        this.companyService=companyService;
     }
 
     public List<JobApplication> getAllJobApplications(){
@@ -30,7 +34,18 @@ public class JobApplicationService {
         return result.get();
     }
 
+    public JobApplication createJobApplication(JobApplicationRequest request){
+        Company company= companyService.getCompanyById(request.companyId());
 
+        JobApplication application= new JobApplication(
+                company,
+                request.position(),
+                request.applicationDate(),
+                request.status(),
+                request.notes()
+        );
+        return jobApplicationRepository.save(application);
+    }
 
 
 
